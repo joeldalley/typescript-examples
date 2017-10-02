@@ -4,7 +4,7 @@
 
 **(1)**
   Create a class whose constructor argument can be either of:
-> an object of the class, or
+> an instance of the class, or
 >
 > some RESTful endpoint JSON that we're expecting
 
@@ -17,6 +17,10 @@ E.g.
 const first = new Person.Model({id: 1, firstName: 'Joel', lastName: 'Dalley'})
 const second = new Person.Model({...first, id: 2})
 ```
+
+In satisfying **(1)** and **(2)**, we have an object that can be used to homogenize varying forms of JSON input (as from [RESTful](https://en.wikipedia.org/wiki/Representational_state_transfer) endpoints or other data services) into a uniform shape, for consumption by the rest of our program.
+
+And we have an object that can be used to spread values into a second instance. In other words: our data structure can be used to populate a [Redux](http://redux.js.org/) store state, and we can update our state from a previous instance of state, or from JSON supplied by our data service.
 
 ## Namespaces
 
@@ -149,15 +153,34 @@ export class Model {
 
   // Methods
   constructor(json: Constructable = {list: []}) {
-    this.id = get(this, json, 'id', ['list.0.ID', 'list.0.AlternateID'])
-    this.emailAddr = get(this, json, 'emailAddr', ['list.0.Email'])
-    this.firstName = get(this, json, 'firstName', [
-      'list.0.FirstName',
-      'list.0.Name.First'
+    this.id = get(this, json, 'id', [
+      'list.0.ID', // Preferred ID location, from data service JSON.
+      'list.0.AlternateID' // Back-up location, from data service JSON.
+      // If both are absent, then there will be an 'id' field in the JSON,
+      // because we are constructing from an instance of Person.Model.
     ])
+
+    // Email is only found at one "dot-path" in all data service JSON formulas.
+    // Alternatively, we are constructing from an instance of Person.Model,
+    // in which case we will have an 'emailAddr' field that get() will return.
+    this.emailAddr = get(this, json, 'emailAddr', [
+      'list.0.Email'
+    ])
+
+    this.firstName = get(this, json, 'firstName', [
+      'list.0.FirstName', // If we find list.0.FirstName,
+      'list.0.Name.First' // we never look for list.0.Name.First.
+      // If we find neither "dot-path," then we are constructing from
+      // an instance of Person.Model, and get() will return the value
+      // of the 'firstName' field.
+    ])
+
     this.lastName = get(this, json, 'lastName', [
-      'list.0.LastName',
-      'list.0.Name.Last'
+      'list.0.LastName', // If we find list.0.LastName,
+      'list.0.Name.Last' // we never look for list.0.Name.Last.
+      // If we find neither "dot-path," then we are constructing from
+      // an instance of Person.Model, and get() will return the value
+      // of the 'lastName' field.
     ])
   }
 }
