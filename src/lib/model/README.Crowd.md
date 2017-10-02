@@ -21,6 +21,8 @@ const second = new Crowd.Model({
 })
 ```
 
+**(2)**  Construct from an array of [Person](https://github.com/joeldalley/typescript-examples/blob/master/src/lib/model/Person.ts) objects.
+
 ## Namespaces
 
 The Enum, Type and Class below are all part of the `Crowd` namespace.
