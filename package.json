@@ -1,0 +1,35 @@
+{
+  "name": "typescript-examples",
+  "version": "0.0.1",
+  "description": "Typescript Examples.",
+  "keywords": "typescript,javascript,@types,tsc,tslint,jest,node,babel",
+  "dependencies": {},
+  "devDependencies": {
+    "@types/jest": "^21.1.1",
+    "@types/node": "^8.0.31",
+    "babel-cli": "^6.26.0",
+    "babel-preset-env": "^1.6.0",
+    "jest-cli": "^21.2.1",
+    "tslint": "^5.7.0",
+    "typescript": "^2.5.3"
+  },
+  "scripts": {
+    "build": "npm run clean && npm run tsc --pretty --",
+    "clean": "rm -rf artifacts",
+    "test": "jest",
+    "tsc": "tsc",
+    "watch": "npm run tsc -- -w"
+  },
+  "jest": {
+    "roots": [
+      "artifacts/examples"
+    ]
+  },
+  "author": "Joel Dalley <joeldalley@gmail.com> (https://github.com/joeldalley)",
+  "license": "MIT",
+  "babel": {
+    "presets": [
+      "env"
+    ]
+  }
+}

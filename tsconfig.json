@@ -1,0 +1,24 @@
+{
+    "compileOnSave": false,
+    "compilerOptions": {
+      "lib": ["es2016"],
+      "module": "es2015",
+      "moduleResolution": "node",
+      "newLine": "lf",
+      "noImplicitReturns": true,
+      "noUnusedLocals": true,
+      "noUnusedParameters": true,
+      "outDir": "artifacts",
+      "rootDir": "src",
+      "sourceMap": true,
+      "strict": true,
+      "target": "es2015"
+    },
+    "include": [
+      "src"
+    ],
+    "exclude": [
+      "artifacts",
+      "node_modules"
+    ]
+}
