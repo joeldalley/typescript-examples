@@ -15,7 +15,7 @@ We should be able to instantiate the class equally well with either constructor 
 E.g.
 ```typescript
 const first = new Person.Model({id: 1, firstName: 'Joel', lastName: 'Dalley'})
-const second = new Foo({...first, id: 2})
+const second = new Person.Model({...first, id: 2})
 ```
 
 ## Namespaces

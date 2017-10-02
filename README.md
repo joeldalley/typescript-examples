@@ -1,5 +1,11 @@
 # typescript-examples
 
+## Run
+
+```sh
+npm install && npm build && npm test
+```
+
 ## Person
 
 [README](https://github.com/joeldalley/typescript-examples/blob/master/README.Person.md)<br/>
