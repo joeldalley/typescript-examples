@@ -3,7 +3,7 @@
 ## Run
 
 ```sh
-npm install && npm build && npm test
+npm install && npm run build && npm run test
 ```
 
 ## Person

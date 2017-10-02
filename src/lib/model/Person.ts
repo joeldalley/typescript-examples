@@ -7,8 +7,8 @@ export namespace Person {
   interface Name {Name: {First: string, Last: string}}
   interface AlternateName {FirstName: string, LastName: string}
 
-  export type JsonWithName = Json & (Id | AlternateId) & (Name | AlternateName)
-  export type Constructable = Person.Model | {list: JsonWithName[]}
+  export type JsonWithIdAndName = Json & (Id | AlternateId) & (Name | AlternateName)
+  export type Constructable = Person.Model | {list: JsonWithIdAndName[]}
 
   export class Model {
     [index: string]: number | string
