@@ -191,8 +191,8 @@ The helper function, `get`, wraps a specific use of the `lib` function, `getOrEl
 `get` makes it easy to assign values to fields in an object constructor, by considering a list of possible locations within the given `Constructable` object where a value might be found, for each field we need to set in the constructor. Examples:
 
 ```typescript
-new Person.Model({list: [{ID: 1, FirstName: '', LastName: }]}).id // 1
-new Person.Model({list: [{AlternateID: 1, FirstName: '', LastName: }]}).id // 1
+new Person.Model({list: [{ID: 1, FirstName: '', LastName: ''}]}).id // 1
+new Person.Model({list: [{AlternateID: 1, FirstName: '', LastName: ''}]}).id // 1
 new Person.Model({
   ...new Person.Model({id: 0, emailAddr: '', firstName: '', lastName: ''}),
   id: 1
