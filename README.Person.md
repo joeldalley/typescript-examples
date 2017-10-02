@@ -1,4 +1,4 @@
-# Person
+# [Person](https://github.com/joeldalley/typescript-examples/blob/master/src/lib/model/Person.ts)
 
 ## Design Goals
 
